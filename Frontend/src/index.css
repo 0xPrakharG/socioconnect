@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+:root {
+  --bg-primary: #fff;
+  --bg-secondary: #f0f2f5;
+  --bg-third: #e4e6eb;
+  --bg-forth: #f0f2f5;
+  --color-primary: #050505;
+  --color-secondary: #65676b;
+  --divider: #ced0d4;
+  --dark-bg-primary: #18191a;
+  --dark-bg-secondary: #242526;
+  --dark-bg-third: #3a3b3c;
+  --dark-color-primary: #242526;
+  --dark-color-secondary: #b0b3b8;
+  --blue-color: #1876f2;
+  --green-color: #39b54a;
+  --light-blue-color: #e7f3ff;
+  --border-color: #ccced2;
+  --shadow-1: rgba(0, 0, 0, 0.2);
+  --shadow-2: rgba(0, 0, 0, 0.1);
+  --shadow-3: rgba(0, 0, 0, 0.3);
+  --shadow-inset: rgba(255, 255, 255, 0.5);
+  --blur: rgba(255, 255, 255, 0.668);
+}
+
+@layer base {
+  body {
+    @apply bg-[#f9f9f9] h-[100%] w-[100%] overflow-x-hidden;
+  }
+
+  @layer components{
+    .blue-btn{
+      @apply border-none outline-none bg-blue-color py-[8.5px] px-[12px] rounded-[7px] font-semibold text-[14px] text-primary flex items-center justify-center gap-[6px] cursor-pointer;
+    }
+    .blur{
+      @apply fixed top-0 left-0 bottom-0 right-0 bg-blur;
+    }
+    .reg_line{
+      @apply flex flex-col py-[7px] px-0 gap-[5px] lg:flex-row;
+    }
+    .hover1{
+      @apply bg-secondary;
+    }
+    .hover2{
+      @apply bg-third;
+    }
+    .hover3{
+      @apply bg-[#d4d6da3a];
+    }
+    .active {
+      @apply border-b-[3px] border-green-color rounded-b-none h-[56px]
+    }
+    .header_left{
+      @apply flex items-center gap-[8px] bg-forth p-[10px] pr-[20px] rounded-[50px] cursor-text;
+    }
+  }
+}

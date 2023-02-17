@@ -1,0 +1,3 @@
+.stories {
+  grid-template-columns: repeat(6,105px);
+}
