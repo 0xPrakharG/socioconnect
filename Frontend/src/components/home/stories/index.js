@@ -1,9 +1,16 @@
 import { ArrowRight, Plus } from "../../../svg";
-import "./styles.css";
 import { stories } from "../../../data/home";
 import Story from "./Story";
+import { useMediaQuery } from "react-responsive";
 
 export default function Stories() {
+  const query1150px = useMediaQuery({
+    query: "(max-width: 1150px)",
+  })
+  const query950px = useMediaQuery({
+    query: "(max-width: 950px)",
+  })
+  const max = query950px ? 5 : query1150px ? 4 : stories.length;
   return (
     <div className="relative grid gap-[10px] p-[6px_0] stories">
       <div className="relative h-[190px] w-[100%] rounded-[10px] overflow-hidden bg-[#fff] cursor-pointer shadow-[0px_1px_2px] shadow-shadow-1">
@@ -14,7 +21,7 @@ export default function Stories() {
         <div className="text-[#000] absolute top-[84%] left-[15%] text-[12px]">Create Story</div>
       </div>
       {
-        stories.map((story, i) => (
+        stories.slice(0, max).map((story, i) => (
           <Story key={i} profile_picture={story.profile_picture} profile_name={story.profile_name} image={story.image} />
         ))
       }
