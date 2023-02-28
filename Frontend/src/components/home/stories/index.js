@@ -10,7 +10,10 @@ export default function Stories() {
   const query950px = useMediaQuery({
     query: "(max-width: 950px)",
   })
-  const max = query950px ? 5 : query1150px ? 4 : stories.length;
+  const query940px = useMediaQuery({
+    query: "(max-width: 940px)",
+  })
+  const max = query940px ? 4 : query950px ? 5 : query1150px ? 4 : stories.length;
   return (
     <div className="relative grid gap-[10px] p-[6px_0] stories">
       <div className="relative h-[190px] w-[100%] rounded-[10px] overflow-hidden bg-[#fff] cursor-pointer shadow-[0px_1px_2px] shadow-shadow-1">
@@ -25,7 +28,7 @@ export default function Stories() {
           <Story key={i} profile_picture={story.profile_picture} profile_name={story.profile_name} image={story.image} />
         ))
       }
-      <div className="w-[40px] h-[40px] bg-primary rounded-[50%] grid items-center justify-center absolute top-[50%] translate-y-[-50%] right-[-5px] shadow-[1px_2px] shadow-shadow-1 cursor-pointer">
+      <div className="w-[40px] h-[40px] bg-primary rounded-[50%] grid items-center justify-center absolute top-[50%] translate-y-[-50%] right-[-5px] shadow-[1px_2px] shadow-shadow-1 cursor-pointer right_arrow">
         <ArrowRight color="#65676b" />
       </div>
     </div>

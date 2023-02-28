@@ -36,11 +36,10 @@
     margin-left: 10px;
   }
   .home_middle{
-    position: relative;
-    margin-left: 50px;
+    margin-left: -60px;
   }
   .create_post {
-    width: 255%;
+    width: 100%;
   }
   .right_home {
     width: 15vw;
@@ -49,6 +48,29 @@
     width: 50px;
   }
   .stories {
-    width: 255%;
+    width: 100%;
+  }
+}
+
+@media (max-width:940px){
+  .create_post {
+    width: 84%;
+  }
+  .stories {
+    width: 84%;
+  }
+  .home_middle {
+    margin-left: -40px;
+  }
+  .right_home {
+    width: 20vw;
+    left: 75%;
+  }
+  .contacts-circle {
+    width: 80px;
+    right: -20px;
+  }
+  .splitter1 {
+    width: 23vw;
   }
 }

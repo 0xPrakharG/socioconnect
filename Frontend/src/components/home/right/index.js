@@ -6,7 +6,7 @@ export default function RightHome({user}) {
   return (
     <div className="fixed left-[80.7vw] top-[4rem] w-[17vw] right_home">
       <div className="">Sponsored</div>
-      <div className="w-[18vw] h-[1.3px] bg-divider m-[6px_2px_0_-2px]"></div>
+      <div className="w-[18vw] h-[1.3px] bg-divider m-[6px_2px_0_-2px] splitter1"></div>
       <div className="">
         <div className="relative flex items-center justify-between p-[12px_0_7px_0px] font-semibold text-secondary-color">
           <div className="">Contacts</div>
