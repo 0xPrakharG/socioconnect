@@ -4,7 +4,7 @@ import Contact from "./Contact";
 export default function RightHome({user}) {
   const color = "#65676b";
   return (
-    <div className="fixed left-[80.7vw] top-[4rem] w-[17vw] right_home">
+    <div className="fixed left-[82.7vw] top-[4rem] w-[17vw] right_home">
       <div className="">Sponsored</div>
       <div className="w-[18vw] h-[1.3px] bg-divider m-[6px_2px_0_-2px] splitter1"></div>
       <div className="">
