@@ -57,7 +57,7 @@ export default function LoginForm({setVisible}) {
   return (
     <div className="h-[78vh] text-primary-color md:flex md:items-center md:max-w-[1000px] md:my-0 md:mx-auto md:py-0 md:px-[1rem]">
           <div className="w-[300px] mx-auto my-0 md:flex md:flex-col md:w-[50%] md:mb-[25vh]">
-            <img src="../../icons/sc.png" className="w-[300px] ml-[-1rem]" alt="" />
+            <img src="../../icons/sc.png" className="w-[400px] ml-[-1rem]" alt="" />
             <span className="text-[17px] md:text-[20px]">
               SocioConnect helps you connect and share with people in your life.
             </span>
@@ -84,7 +84,7 @@ export default function LoginForm({setVisible}) {
                   </Form>
                 )}
               </Formik>
-              <Link to="/forgot" className="text-blue-color cursor-pointer text-[14px] hover:underline">Forgot Password?</Link>
+              <Link to="/reset" className="text-blue-color cursor-pointer text-[14px] hover:underline">Forgot Password?</Link>
               <HashLoader loading={loading} color="#534741" size={30} />
               {error && <div className="text-[#b94a48]">{error}</div>}
               <div className="w-[100%] h-[1px] bg-third"></div>
