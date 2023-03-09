@@ -1,0 +1,15 @@
+@media (min-width: 1024px){
+  .reset_form .input_error{
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  .reset_form .error_arrow_left{
+    border-top: 10px solid #b94a48;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    left: 0;
+    top:13px;
+  }
+}

@@ -53,7 +53,7 @@ export default function RegisterForm({setVisible}) {
     first_name: Yup.string().required("What's your First Name?").min(2, "First Name must be between 2 and 16 characters").max(16, "First Name must be between 2 and 16 characters").matches(/^[aA-zZ\s]+$/, "Numbers and special Character are not allowed"),
     last_name: Yup.string().required("What's your Last Name?").min(2, "Last Name must be between 2 and 16 characters").max(16, "Last Name must be between 2 and 16 characters").matches(/^[aA-zZ]+$/, "Numbers and special Character are not allowed"),
     email: Yup.string().required("You will require this when you try to login or when you need to change your password.").email("Enter a valid Email Address."),
-    password: Yup.string().required("Password must contain atleast 6 characters, 1 special charater, 1 number, letters").min(6, "First Name must be between 6 and 36 characters").max(36, "First Name must be between 6 and 36 characters"),
+    password: Yup.string().required("Password must contain atleast 6 characters, 1 special charater, 1 number, letters").min(6, "Password must be atleast 6 characters").max(36, "Password must be atleast 6 characters"),
   })
 
   const [dateError, setDateError] = useState("");
