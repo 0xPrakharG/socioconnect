@@ -2,14 +2,28 @@ import {Form, Formik} from "formik";
 import {Link} from 'react-router-dom';
 import LoginInput from '../../components/inputs/loginInput';
 import * as Yup from "yup";
+import axios from "axios";
 
-export default function SearchAccount({email,setEmail,error}) {
+export default function SearchAccount({ email, setEmail, error, setError, setLoading, setUserInfos, setVisible }) {
   const validateEmail = Yup.object({
     email:Yup.string()
     .required("Email Address is required.")
     .email("Must be a valid email address.")
     .max(50, "Email address can't be more than 50 characters.")
   });
+
+  const handleSearch = async() => {
+    try {
+      setLoading(true);
+      const {data} = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/findUser`, {email});
+      setUserInfos(data);
+      setVisible(1);
+    } catch (error) {
+      setLoading(false);
+      setError(error.response.data.message);
+    }
+  }
+
   return (
     <div className="relative bg-primary shadow-[0_1px_2px] shadow-shadow-1 rounded-[10px] w-[450px] h-fit reset_form">
           <div className="p-[15px] font-semibold text-[24px] border-b-[1px] border-b-solid border-b-third reset_form_header">
@@ -20,7 +34,9 @@ export default function SearchAccount({email,setEmail,error}) {
           </div>
           <Formik enableReinitialize initialValues={{
             email
-          }} validationSchema={validateEmail}>
+          }} validationSchema={validateEmail} onSubmit={()=>{
+            handleSearch();
+          }}>
             {(formik) => (
               <Form className='flex flex-col items-center'>
                 <LoginInput type="email" name="email" onChange={(e)=>setEmail(e.target.value)} placeholder="Email Address or Phone Number" />

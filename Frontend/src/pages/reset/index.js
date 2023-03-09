@@ -13,11 +13,13 @@ export default function Reset() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [visible,setVisible] = useState(0);
+  const [loading,setLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [conf_password, setConf_password] = useState('');
   const [code, setCode] = useState('');
   const [error, setError] = useState('');
+  const [userInfos, setUserInfos] = useState('');
 
   const logout = ()=>{
     Cookies.set("user", "");
@@ -47,10 +49,10 @@ export default function Reset() {
       </div>
       <div className="h-[67vh] flex items-center justify-center reset_wrap">
         {visible === 0 && (
-          <SearchAccount email={email} setEmail={setEmail} error={error} />
+          <SearchAccount email={email} setEmail={setEmail} error={error} setError={setError} setLoading={setLoading} setUserInfos={setUserInfos} setVisible={setVisible} />
         )}
-        {visible === 1 && (
-          <SendEmail user={user} />
+        {visible === 1 && userInfos && (
+          <SendEmail email={email} userInfos={userInfos} error={error} setError={setError} setLoading={setLoading} setUserInfos={setUserInfos} setVisible={setVisible} />
         )}
         {visible === 2 && (
           <CodeVerification user={user} code={code} setCode={setCode} error={error} />
