@@ -55,10 +55,10 @@ export default function Reset() {
           <SendEmail email={email} userInfos={userInfos} error={error} setError={setError} setLoading={setLoading} setUserInfos={setUserInfos} setVisible={setVisible} />
         )}
         {visible === 2 && (
-          <CodeVerification user={user} code={code} setCode={setCode} error={error} />
+          <CodeVerification user={user} code={code} setCode={setCode} error={error} setError={setError} setLoading={setLoading} userInfos={userInfos} setVisible={setVisible} />
         )}
         {visible === 3 && (
-          <ChangePassword password={password} setPassword={setPassword} conf_password={conf_password} setConf_password={setConf_password} error={error} />
+          <ChangePassword password={password} setPassword={setPassword} conf_password={conf_password} setConf_password={setConf_password} error={error} setError={setError} setLoading={setLoading} userInfos={userInfos} setVisible={setVisible} />
         )}
       </div>
     </div>

@@ -11,6 +11,7 @@ export default function SendEmail({ userInfos, email, setError, setVisible, setU
       );
       setError("");
       setVisible(2);
+      setLoading(false);
     } catch (error) {
       setLoading(false);
       setError(error.response.data.message);
