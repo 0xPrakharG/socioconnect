@@ -1,4 +1,5 @@
 import { Routes,Route } from "react-router-dom";
+import CreatePostPopup from "./components/createPostPopup";
 import Home from "./pages/home";
 import Activate from "./pages/home/activate";
 import Login from "./pages/login";
@@ -9,6 +10,7 @@ import NotLoggedInRoutes from "./routes/NotLoggedInRoutes";
 
 function App() {
   return <div>
+    <CreatePostPopup />
     <Routes>
       <Route element={<LoggedInRoutes />}>
         <Route path="/profile" element={<Profile />} exact />
