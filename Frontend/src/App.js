@@ -1,3 +1,4 @@
+import { useSelector } from "react-redux";
 import { Routes,Route } from "react-router-dom";
 import CreatePostPopup from "./components/createPostPopup";
 import Home from "./pages/home";
@@ -9,8 +10,9 @@ import LoggedInRoutes from "./routes/LoggedInRoutes";
 import NotLoggedInRoutes from "./routes/NotLoggedInRoutes";
 
 function App() {
+  const { user } = useSelector((state) => ({...state}));
   return <div>
-    <CreatePostPopup />
+    <CreatePostPopup user={user} />
     <Routes>
       <Route element={<LoggedInRoutes />}>
         <Route path="/profile" element={<Profile />} exact />

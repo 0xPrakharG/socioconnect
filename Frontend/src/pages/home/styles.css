@@ -7,6 +7,22 @@
 .error_text {
   color: #e90e0e;
 }
+.box_header{
+  border-bottom: 1px solid var(--bg-third);
+}
+.postBox .small_circle{
+  position: absolute;
+  right: 16px;
+  top: 12px;
+}
+.post_input{
+  outline: none;
+  font-family: inherit;
+}
+.flex_center textarea {
+  background: transparent;
+  position: absolute;
+}
 @media (max-width:1150px) {
  .stories, .create_post,.send_verification {
   width: 84%;
