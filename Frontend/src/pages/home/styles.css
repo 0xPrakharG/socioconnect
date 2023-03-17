@@ -1,28 +1,58 @@
 .stories {
   grid-template-columns: repeat(6,115px);
 }
+
 .success_text {
   color: #39b54a;
 }
+
 .error_text {
   color: #e90e0e;
 }
+
 .box_header{
   border-bottom: 1px solid var(--bg-third);
 }
+
 .postBox .small_circle{
   position: absolute;
   right: 16px;
   top: 12px;
 }
+
 .post_input{
   outline: none;
   font-family: inherit;
 }
+
 .flex_center textarea {
   background: transparent;
   position: absolute;
 }
+
+.post_header_right{
+  width: 35px;
+  height: 35px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.post_submit{
+  text-align: center;
+  width: 96%;
+  margin: 5px 10px;
+  padding: 10px;
+  outline: none;
+  border: none;
+  background: var(--blue-color);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 @media (max-width:1150px) {
  .stories, .create_post,.send_verification {
   width: 84%;
