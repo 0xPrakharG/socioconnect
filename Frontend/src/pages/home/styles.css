@@ -31,8 +31,9 @@
 }
 
 .post_header_right{
-  width: 35px;
-  height: 35px;
+  padding: 6px;
+  width: 43px;
+  height: 40px;
   display: grid;
   place-items: center;
   cursor: pointer;
