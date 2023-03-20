@@ -1,16 +1,17 @@
 import { useEffect, useRef, useState } from "react"
-import Picker from 'emoji-picker-react'
+// import Picker from 'emoji-picker-react'
 import EmojiPickerBackground from "./EmojiPickerBackground";
 import AddToYourPost from "./AddToYourPost";
+import ImagePreview from "./ImagePreview";
 
 export default function CreatePostPopup({ user }) {
   const [text, setText] = useState("");
-  const [showPrev, setShowPrev] = useState(false);
-  const textRef = useRef(null);
+  const [showPrev, setShowPrev] = useState(true);
+  const [images, setImages] = useState([]);
   
   return (
     <div className="bg-blur absolute top-0 left-0 z-10 h-[100%] w-[100%]">
-      <div className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] bg-primary shadow-[0_12px_20px_0] shadow-shadow-1 min-h-[220px] w-[500px] rounded-[5px] postBox">
+      <div className={`absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] bg-primary shadow-[0_12px_20px_0] shadow-shadow-1 min-h-[220px] w-[500px] rounded-[5px] postBox ${showPrev ? "top-[53%]" : ""}`}>
         <div className="relative flex items-center justify-center text-[20px] font-bold p-[14px_15px_17px_15px] border-b-[1px_solid] box_header">
           <div className="small_circle">
             <i className="exit_icon"></i>
@@ -30,17 +31,12 @@ export default function CreatePostPopup({ user }) {
             </div>
           </div>
         </div>
-        {!showPrev && (
+        {!showPrev ? (
           <>
-            <div className="min-h-[90px] relative flex items-center justify-center flex_center">
-              <textarea ref={textRef}
-              maxLength="100" value={text}
-              placeholder={`What's on your mind, ${user.first_name}`}
-              onChange={(e) => setText(e.target.value)}
-              className="relative border-none resize-none p-[5px_15px] mb-[10px] w-[470px] ml-[1px] text-[24px] bg-primary text-primary-color min-h--[90px] overflow-y-visible post_input"></textarea>
-            </div>
-            <EmojiPickerBackground text={text} setText={setText} textRef={textRef} />
+            <EmojiPickerBackground text={text} setText={setText} user={user} />
           </>
+        ) : (
+          <ImagePreview text={text} setText={setText} user={user} images={images} setImages={setImages} />
         )}
         <AddToYourPost />
         <button className="post_submit">Post</button>
