@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import EmojiPickerBackground from "./EmojiPickerBackground";
 
-export default function ImagePreview({ text, setText, user, images, setImages }) {
+export default function ImagePreview({ text, setText, user, images, setImages, setShowPrev }) {
   const ImageInputRef = useRef(null);
 
   const handleImages = (e) => {
@@ -27,12 +27,12 @@ export default function ImagePreview({ text, setText, user, images, setImages })
                 <i className="edit_icon"></i>
                 Edit
               </button>
-              <button className="hover:hover1">
+              <button className="hover:hover1" onClick={() => {ImageInputRef.current.click()}}>
                 <i className="addPhoto_icon"></i>
                 Add Photos/Videos
               </button>
             </div>
-            <div className="w-[30px] h-[30px] rounded-[50%] border-[1px] border-solid border-third bg-primary grid place-items-center absolute right-[10px] top-[10px] cursor-pointer z-40 small_white_circle">
+            <div className="w-[30px] h-[30px] rounded-[50%] border-[1px] border-solid border-third bg-primary grid place-items-center absolute right-[10px] top-[10px] cursor-pointer z-40 small_white_circle" onClick={() => {setImages([])}}>
               <i className="exit_icon"></i>
             </div>
             <div className={images.length === 1 ? "preview1" : images.length === 2 ? "preview2" : images.length === 3 ? "preview3" : images.length === 4 ? "preview4" : images.length === 5 ? "preview5" : images.length % 2 === 0 ? "preview6" : "preview6 singular_grid"}>
@@ -45,7 +45,9 @@ export default function ImagePreview({ text, setText, user, images, setImages })
           </div>
         ) : (
           <div className="relative bg-secondary rounded-[10px] p-[10px] h-[250px] grid place-items-center cursor-pointer add_pics_inside1">
-            <div className="w-[30px] h-[30px] rounded-[50%] border-[1px] border-solid border-third bg-primary grid place-items-center absolute right-[10px] top-[10px] cursor-pointer z-40 small_white_circle">
+            <div className="w-[30px] h-[30px] rounded-[50%] border-[1px] border-solid border-third bg-primary grid place-items-center absolute right-[10px] top-[10px] cursor-pointer z-40 small_white_circle" onClick={() => {
+              setShowPrev(false)
+            }}>
               <i className="exit_icon"></i>
             </div>
             <div className="flex flex-col items-center gap-[2px] add_col" onClick={() => {ImageInputRef.current.click()}}>
