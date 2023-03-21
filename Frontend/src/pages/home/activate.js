@@ -41,12 +41,13 @@ export default function Activate() {
     });
     setTimeout(()=>{
       navigate("/");
-    },3000)
+    },3000);
     } catch (error) {
       setError(error.response.data.message);
+
       setTimeout(()=>{
         navigate("/");
-      },3000)
+      },3000);
     }
   }
 
