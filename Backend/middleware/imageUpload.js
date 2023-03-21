@@ -8,10 +8,10 @@ module.exports = async function (req, res, next) {
     let files = Object.values(req.files).flat();
     files.forEach((file) => {
       if(
-        files.mimettype !== 'image/jpeg' &&
-        files.mimettype !== 'image/png' &&
-        files.mimettype !== 'image/gif' &&
-        files.mimettype !== 'image/webp'
+        file.mimetype !== 'image/jpeg' &&
+        file.mimetype !== 'image/png' &&
+        file.mimetype !== 'image/gif' &&
+        file.mimetype !== 'image/webp'
         ){
         removeTmp(file.tempFilePath)
         return res.status(400).json({ message: "Unsupported format." });
@@ -20,7 +20,8 @@ module.exports = async function (req, res, next) {
         removeTmp(file.tempFilePath)
         return res.status(400).json({ message: "File size is too large." });
       }
-    })
+    });
+    next();
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
