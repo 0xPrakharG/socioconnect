@@ -1,11 +1,11 @@
 import { Feeling, LiveVideo, Photo } from "../../svg";
 
-export default function CreatePost({ user }) {
+export default function CreatePost({ user, setVisible }) {
   return (
     <div className="bg-primary rounded-[10px] mt-[1.1rem] shadow-[0_1px_2px] shadow-shadow-1 w-[100%] cursor-pointer create_post">
       <div className="flex items-center gap-2 p-[10px_17px_5px_15px]">
         <img src={user?.picture} alt="" className="w-[40px] h-[40px] rounded-[50%] object-cover"/>
-        <div className="bg-forth h-[41px] text-secondary-color flex-1 rounded-[50px] text-[17px] leading-[21px] flex items-center pl-[10px] hover:hover2">
+        <div className="bg-forth h-[41px] text-secondary-color flex-1 rounded-[50px] text-[17px] leading-[21px] flex items-center pl-[10px] hover:hover2" onClick={()=>{setVisible(true)}}>
           What's on your mind, {user?.first_name}
         </div>
       </div>

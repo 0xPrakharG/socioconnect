@@ -186,6 +186,73 @@
   grid-column: 1/3;
 }
 
+.post_backgrounds{
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.post_backgrounds img{
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.no_bg{
+  background: var(--bg-secondary);
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.bgHandler{
+  height: 360px;
+  width: 100%;
+  background-size: cover;
+}
+
+.bgHandler textarea{
+  text-align: center;
+  height: 360px;
+  margin-top: 10px;
+}
+
+.postError{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: var(--bg-primary);
+  opacity: 0.9;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  z-index: 333;
+  color: #b94a48;
+  animation: anim 0.3s;
+  border-radius: 5px;
+  padding: 3rem;
+}
+
+.postError_error{
+  width: 75%;
+  font-weight: 600;
+}
+
+@keyframes anim {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
 @media (max-width:1150px) {
  .stories, .create_post,.send_verification {
   width: 84%;

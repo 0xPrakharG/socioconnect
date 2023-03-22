@@ -1,12 +1,22 @@
 import { useRef } from "react";
 import EmojiPickerBackground from "./EmojiPickerBackground";
 
-export default function ImagePreview({ text, setText, user, images, setImages, setShowPrev }) {
+export default function ImagePreview({ text, setText, user, images, setImages, setShowPrev, setError }) {
   const ImageInputRef = useRef(null);
 
   const handleImages = (e) => {
     let files = Array.from(e.target.files);
     files.forEach((img) => {
+      if(img.type !== "image/jpeg" && img.type !== "image/png" && img.type !== "image/webp" && img.type !== "image/gif"){
+        setError(`${img.name} format is unsupported! Only jpeg, png, webp, gif are allowed.`);
+        files = files.filter((item) => item.name !== img.name);
+        return;
+      }
+      else if (img.size > 1024 * 1024 * 5){
+        setError(`${img.name} size is too large. max 5mb is supported.`);
+        files = files.filter((item) => item.name !== img.name);
+        return;
+      }
       const reader = new FileReader();
       reader.readAsDataURL(img);
       reader.onload = (readerEvent) => {
@@ -19,7 +29,7 @@ export default function ImagePreview({ text, setText, user, images, setImages, s
     <div className="max-h-[500px] overflow-y-auto overflow-x-hidden overflow_a scrollbar">
       <EmojiPickerBackground text={text} setText={setText} user={user} type2 />
       <div className="m-[10px_15px] p-[10px] border-[1px] border-solid border-third rounded-[10px] add_pics_wrap">
-        <input type="file" multiple hidden ref={ImageInputRef} onChange={handleImages} />
+        <input type="file" accept="image/jpeg, image/png, image/webp, image/gif" multiple hidden ref={ImageInputRef} onChange={handleImages} />
         {images && images.length ? (
           <div className="relative bg-secondary rounded-[10px] p-[10px] h-[250px] grid place-items-center cursor-pointer add_pics_inside1 p0">
             <div className="absolute left-[1rem] top-[1rem] flex gap-[1rem] preview_actions">
@@ -37,7 +47,7 @@ export default function ImagePreview({ text, setText, user, images, setImages, s
             </div>
             <div className={images.length === 1 ? "preview1" : images.length === 2 ? "preview2" : images.length === 3 ? "preview3" : images.length === 4 ? "preview4" : images.length === 5 ? "preview5" : images.length % 2 === 0 ? "preview6" : "preview6 singular_grid"}>
               {
-                images.map((img,i) => (
+                images.map((img, i) => (
                   <img src={img} key={i} alt="" />
                 ))
               }
