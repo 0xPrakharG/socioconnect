@@ -60,6 +60,11 @@
   fill: var(--green-color);
 }
 
+.active_link {
+  background: var(--light-green-color);
+  color: var(--green-color);
+}
+
 @media (max-width : 1000px ) {
   .middle_icon{
     width: 50px;

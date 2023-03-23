@@ -18,7 +18,7 @@ export default function Home({ setVisible, posts }) {
   }, [])
   return (
     <div className="home" style={{height: `${height+150}px`}}>
-      <Header />
+      <Header page="home" />
       <LeftHome user={user} />
     <div className="absolute mt-[75px] left-[50%] translate-x-[-50%] home_middle" ref={middle}>
       <Stories />

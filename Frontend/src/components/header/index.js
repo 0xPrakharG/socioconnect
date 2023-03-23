@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import {ArrowDown, Friends, Gaming, HomeActive, Logo, Market, Menu, Messenger, Notifications, Search, Watch} from "../../svg";
+import {ArrowDown, Friends, Gaming, HomeActive, Logo, Market, Menu, Messenger, Notifications, Search, Watch, Home} from "../../svg";
 import { useSelector } from "react-redux";
 import SearchMenu from "./SearchMenu";
 import "./styles.css"
@@ -8,7 +8,7 @@ import AllMenu from "./AllMenu";
 import useClickOutside from "../../helpers/clickOutside";
 import UserMenu from "./userMenu";
 
-export default function Header() {
+export default function Header({ page }) {
   const {user} = useSelector((user) => ({...user}));
   const color = "#65676b";
   const [showSearchMenu, setShowSearchMenu] = useState(false);
@@ -39,8 +39,8 @@ export default function Header() {
       {showSearchMenu && <SearchMenu color={color} setShowSearchMenu={setShowSearchMenu} />}
       
       <div className="flex items-center gap-[10px] justify-center header_middle">
-        <Link to="/" className="flex items-center justify-center relative w-[125px] cursor-pointer hover:hover1 active middle_icon">
-          <HomeActive />
+        <Link to="/" className={`flex items-center justify-center relative w-[125px] cursor-pointer hover:hover1 middle_icon ${page === "home" ? "active" : "hover:hover1"}`}>
+          {page === "home" ? <HomeActive /> : <Home color={color} />}
         </Link>
         <Link to="/" className="flex items-center justify-center relative w-[125px] h-[50px] cursor-pointer hover:hover1 middle_icon">
           <Friends color={color} />
@@ -57,7 +57,7 @@ export default function Header() {
         </Link>
       </div>
       <div className="flex absolute right-2 top-[50%] translate-y-[-50%] header_right">
-        <Link to="/profile" className="flex items-center gap-[5px] cursor-pointer py-[6px] px-[10px] rounded-[50px] font-semibold mr-[10px] text-[14px] leading-[19px] hover:hover1 profile_link">
+        <Link to="/profile" className={`flex items-center gap-[5px] cursor-pointer py-[6px] px-[10px] rounded-[50px] font-semibold mr-[10px] text-[14px] leading-[19px] hover:hover1 profile_link ${page === "profile" ? "active_link" : ""}`}>
           <img src={user.picture} alt="" className="w-[29px] h-[29px] rounded-[50%] border-[1px] border-solid border-[#b0b3b0]" />
           <span className="mb-[3px]">{user.first_name}</span>
         </Link>
