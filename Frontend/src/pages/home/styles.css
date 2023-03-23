@@ -1,3 +1,9 @@
+.home {
+  background: var(--bg-secondary);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .stories {
   grid-template-columns: repeat(6,115px);
 }
