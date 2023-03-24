@@ -34,7 +34,9 @@ html {
   --shadow-inset: rgba(255, 255, 255, 0.5);
   --blur: rgba(255, 255, 255, 0.668);
 }
-
+.filter_blue {
+  filter: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) hue-rotate(202deg) brightness(97%) contrast(96%);
+}
 @layer base {
   body {
     @apply bg-[#f9f9f9] h-[100%] w-[100%] overflow-x-hidden;
@@ -44,8 +46,14 @@ html {
     .blue-btn{
       @apply border-none outline-none bg-blue-color py-[8.5px] px-[12px] rounded-[7px] font-semibold text-[14px] text-primary flex items-center justify-center gap-[6px] cursor-pointer;
     }
+    .light-blue-btn{
+      @apply border-none outline-none bg-light-blue-color py-[8.5px] px-[12px] rounded-[7px] font-semibold text-[14px] text-primary flex items-center justify-center gap-[6px] cursor-pointer;
+    }
     .gray-btn{
       @apply border-none outline-none bg-secondary py-[8.5px] px-[12px] rounded-[7px] font-semibold text-[14px] text-[#111] flex items-center justify-center gap-[6px] cursor-pointer;
+    }
+    .blue-btn, .gray-btn span{
+      @apply translate-y-[-1px];
     }
     .blur{
       @apply fixed top-0 left-0 bottom-0 right-0 bg-blur;
