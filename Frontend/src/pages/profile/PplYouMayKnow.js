@@ -14,7 +14,7 @@ export default function PplYouMayKnow() {
       <div className="pplumayknow_list">
         {
           stories.map((item, i) => (
-            <AddFriendSmallCard item={item} />
+            <AddFriendSmallCard item={item} key={i} />
           ))
         }
       </div>

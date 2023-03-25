@@ -76,7 +76,7 @@ export default function CreatePostPopup({ user, setVisible }) {
   }
   
   return (
-    <div className="bg-blur absolute top-0 left-0 z-10 h-[100%] w-[100%]">
+    <div className="bg-blur fixed top-0 left-0 z-10 h-[100%] w-[100%]">
       <div className={`absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] bg-primary shadow-[0_12px_20px_0] shadow-shadow-1 min-h-[220px] w-[500px] rounded-[5px] postBox ${showPrev ? "top-[53%]" : ""}`} ref={popup}>
         {
           error && <PostError error={error} setError={setError} />

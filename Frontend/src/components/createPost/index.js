@@ -1,6 +1,6 @@
 import { Feeling, LiveVideo, Photo } from "../../svg";
 
-export default function CreatePost({ user, setVisible }) {
+export default function CreatePost({ user, setVisible, profile }) {
   return (
     <div className="bg-primary rounded-[10px] mt-[1.1rem] shadow-[0_1px_2px] shadow-shadow-1 w-[100%] cursor-pointer create_post">
       <div className="flex items-center gap-2 p-[10px_17px_5px_15px]">
@@ -19,10 +19,19 @@ export default function CreatePost({ user, setVisible }) {
           <Photo color="#4bbf67" />
           Photo/Video
         </div>
-        <div className="flex items-center justify-center gap-2 font-semibold p-[7px] text-secondary-color rounded-[10px] text-[14px] hover:hover1">
-          <Feeling color="#f7b928" />
-          Feeling/Activity
-        </div>
+        {
+          profile ? (
+            <div className="flex items-center justify-center gap-2 font-semibold p-[7px] text-secondary-color rounded-[10px] text-[14px] hover:hover1">
+              <i className="lifeEvent_icon"></i>
+              Life Event
+            </div>
+          ) : (
+            <div className="flex items-center justify-center gap-2 font-semibold p-[7px] text-secondary-color rounded-[10px] text-[14px] hover:hover1">
+              <Feeling color="#f7b928" />
+              Feeling/Activity
+            </div>
+          )
+        }
       </div>
     </div>
   )

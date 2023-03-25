@@ -35,7 +35,10 @@ html {
   --blur: rgba(255, 255, 255, 0.668);
 }
 .filter_blue {
-  filter: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) hue-rotate(202deg) brightness(97%) contrast(96%);
+  filter: invert(39%) sepia(57%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(200%) saturate(147.75%) hue-rotate(202deg) brightness(97%) contrast(86%);
+}
+.filter_green {
+  filter: invert(19%) sepia(67%) saturate(300%) saturate(300%) saturate(300%) saturate(300%) saturate(300%) saturate(247.75%) hue-rotate(122deg) brightness(100%) contrast(96%);
 }
 @layer base {
   body {
