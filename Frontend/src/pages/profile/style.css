@@ -119,8 +119,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  font-weight: 700;
-  font-size: 32px;
+  font-weight: 600;
+  font-size: 28px;
 }
 
 .profile_w_right {
@@ -374,6 +374,9 @@
   height: 100%;
   cursor: pointer;
 }
+.profile_photo_card:hover {
+  filter: brightness(110%);
+}
 
 .profile_photo_card img {
   width: 100%;
@@ -391,4 +394,29 @@
 
 .friendship .blue-btn {
   height: 38px;
+}
+
+.profile_photo_card span {
+  color: var(--color-primary);
+  font-size: 14px;
+  padding-left: 1px;
+}
+
+.profile_friend_count {
+  transform: translateY(-5px);
+}
+
+.profile_friend_imgs {
+  display: flex;
+  align-items: center;
+}
+
+.profile_friend_imgs img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px var(--shadow-1);
+}
+.profile_friend_imgs img:hover {
+  filter: brightness(110%);
 }

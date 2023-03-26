@@ -241,7 +241,8 @@ exports.getProfile = async (req, res) => {
     if(profile.requests.includes(user._id)){
       friendship.requestSent = true;
     }
-    const posts = await Post.find({ user: profile._id }).populate("user");
+    const posts = await Post.find({ user: profile._id }).populate("user").sort({ createdAt: -1 });
+    await profile.populate("friends", "first_name last_name username picture");
     res.json({ ...profile.toObject(), posts, friendship });
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -261,7 +262,7 @@ exports.addFriend = async(req, res) => {
         $push: { followers: sender._id },
         });
         await sender.updateOne({
-        $push: { following : sender._id },
+        $push: { following : receiver._id },
         });
         res.json({ message: "friend request has been sent" });
       } else {
@@ -280,15 +281,15 @@ exports.cancelRequest = async(req, res) => {
     if (req.user.id !== req.params.id) {
       const sender = await User.findById(req.user.id);
       const receiver = await User.findById(req.params.id);
-      if (!receiver.requests.includes(sender._id) && !receiver.friends.includes(sender._id)) {
+      if (receiver.requests.includes(sender._id) && !receiver.friends.includes(sender._id)) {
         await receiver.updateOne({
           $pull: { requests: sender._id },
         });
         await receiver.updateOne({
           $pull: { followers: sender._id },
         });
-          await sender.updateOne({
-        $pull: { following : sender._id },
+        await sender.updateOne({
+          $pull: { following : sender._id },
         });
         res.json({ message: "You successfully canceled request" });
       } else {
@@ -333,14 +334,14 @@ exports.unfollow = async(req, res) => {
       const receiver = await User.findById(req.params.id);
       if (receiver.followers.includes(sender._id) && sender.following.includes(receiver._id)) {
         await receiver.updateOne({
-        $push: { followers: sender._id },
+        $pull: { followers: sender._id },
         });
         await sender.updateOne({
         $pull: { following : receiver._id },
         });
         res.json({ message: "You successfully canceled request" });
       } else {
-        return res.status(400).json({ message: "Already canceled" });
+        return res.status(400).json({ message: "Already unfollowed" });
       } 
     } else {
       return res.status(400).json({ message: "You can't cancel a request to yourself" });
