@@ -92,13 +92,12 @@ exports.activateAccount = async(req, res) => {
 
     if(validUser !== user.id) {
       return res.status(400).json({message: "You don't have the authorization to complete this operation."});
-
     }
-    if(check.verified == true){
-      return res.status(400).json({message: "this email is already activated"});
-    }else {
+    if(check.verified == false){
       await User.findByIdAndUpdate(user.id, {verified: true});
       return res.status(200).json({message: "Account has been activated successfully."});
+    }else {
+      return res.status(400).json({message: "this email is already activated"});
     }
   } catch (error) {
     res.status(500).json({message:error.message});
