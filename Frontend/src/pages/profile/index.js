@@ -78,7 +78,7 @@ export default function Profile({ setVisible }) {
                 <Friends friends={profile.friends} />
               </div>
               <div className="profile_right">
-                {!visitor && <CreatePost user={user} profile setVisible={setVisible} />}
+                {!visitor && <CreatePost user={user} profile setVisible={setVisible} type2 />}
                 <GridPosts />
                 <div className="posts">
                   {
