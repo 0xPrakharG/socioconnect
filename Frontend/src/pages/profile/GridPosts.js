@@ -1,5 +1,5 @@
 export default function GridPosts() {
-  
+
   return (
     <div className="createPost">
       <div className="createPost_header" style={{justifyContent : "space-between"}}>
@@ -24,7 +24,7 @@ export default function GridPosts() {
         </div>
         <div className="view_type">
         <i className="grid_icon"></i>
-        Grid View
+        Grid
         </div>
       </div>
     </div>
